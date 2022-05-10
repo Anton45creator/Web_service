@@ -1,6 +1,5 @@
 The flask performs the following functions, performs the following functions:
-- the service receives requests, in turn, requests from the public API 
-(English-language quiz questions);
+- the service receives requests from the public API https://jservice.io/api/random?count=1 , (quiz questions in English);
 - the received questions are saved in the database;
 - the following fields are saved; ID, answer, questions, creation date.
 ***
