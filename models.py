@@ -20,3 +20,4 @@ class QuizModel(Base):
 
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Base.metadata.create_all(engine)
+
