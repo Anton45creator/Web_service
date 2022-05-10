@@ -1,0 +1,38 @@
+version: '3.1'
+
+
+services:
+
+  script:
+    container_name: name_container
+    build: .
+    depends_on:
+      - db
+    environment:
+      - FLASK_ENV=development
+      - FLASK_DEBUG=True
+      - DATABASE_URL=postgresql+psycopg2://postgres:123456@db:5432/quiz
+
+    command: gunicorn -w 1 -b 0.0.0.0:5000 app:app --reload
+    links:
+      - db
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./:/root
+
+  db:
+    container_name: script_db
+    image: postgres:11
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=quiz
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  pgdata:

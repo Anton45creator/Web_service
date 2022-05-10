@@ -1,0 +1,8 @@
+flask
+gunicorn
+sqlalchemy
+flask_restful
+flask_sqlalchemy
+psycopg2-binary
+requests
+
